@@ -1,19 +1,21 @@
 import { generateYAxis } from '@/app/lib/utils';
 import { CalendarIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
-import { Revenue } from '@/app/lib/definitions';
+import { fetchRevenue } from '@/app/lib/data';
 
-// This component is representational only.
-// For data visualization UI, check out:
-// https://www.tremor.so/
-// https://www.chartjs.org/
-// https://airbnb.io/visx/
 
-export default async function RevenueChart({
-  revenue,
-}: {
-  revenue: Revenue[];
-}) {
+
+export default async function RevenueChart() {
+  // hace el componente async para poder usar 'await' para buscar datos.
+  // Esto hace que la página se ejecute del lado del servidor; siendo más seguro y más rapido.
+  const revenue = await fetchRevenue();
+  // La constante revenue es igual a la función fetchRevenue() que se encuentra en el archivo data.ts
+  // Dicha funcion se encarga de hacer una petición a la API para obtener los datos de los ingresos.
+  // Luego, la constante revenue almacena los datos obtenidos de la API.
+  // La constante revenue es un array de objetos, donde cada objeto tiene dos propiedades: month y revenue.
+  // month es el mes y revenue es el ingreso del mes.
+
+
   const chartHeight = 350;
   // Descomentado para que funcione correctamente
   const { yAxisLabels, topLabel } = generateYAxis(revenue);
