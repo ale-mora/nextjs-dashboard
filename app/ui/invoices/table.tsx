@@ -5,6 +5,12 @@ import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
 import { fetchFilteredInvoices } from '@/app/lib/data';
 
 export default async function InvoicesTable({
+  // Esta función renderiza la tabla de facturas.
+  // Recibe dos argumentos: query y currentPage.
+  // query es el término de búsqueda ingresado por el usuario.
+  // currentPage es el número de página actual.
+  // La función llama a la función fetchFilteredInvoices para obtener las facturas filtradas.
+  // La función devuelve una tabla de facturas con los datos de las facturas obtenidos de fetchFilteredInvoices.
   query,
   currentPage,
 }: {
