@@ -7,17 +7,31 @@ import {
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
+import { createInvoice } from '@/app/lib/actions'
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
+  // Función que se encarga de mostrar el formulario de creación de una factura.
+  // customers: es un array que contiene los datos de los clientes.
+  // CustomerField: es una interfaz que define la estructura de los datos de los clientes.
+
+
   return (
-    <form>
+    // Formulario de creación de una factura.
+    // createInvoice: es una función que se encarga de crear una nueva factura.
+    // action: es un atributo que se utiliza para especificar la URL a la que se enviarán los datos del formulario.
+    // En este caso, se está utilizando la función createInvoice como URL de destino.
+    <form action={createInvoice} >
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
+
+
         {/* Customer Name */}
         <div className="mb-4">
           <label htmlFor="customer" className="mb-2 block text-sm font-medium">
             Choose customer
           </label>
           <div className="relative">
+
+            {/* Select */}
             <select
               id="customer"
               name="customerId"
@@ -33,6 +47,8 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                 </option>
               ))}
             </select>
+
+            {/* Icon */}
             <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
           </div>
         </div>
@@ -52,10 +68,13 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                 placeholder="Enter USD amount"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               />
+
+              {/* Icon */}
               <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
         </div>
+
 
         {/* Invoice Status */}
         <fieldset>
