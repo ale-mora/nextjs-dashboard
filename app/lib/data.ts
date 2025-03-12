@@ -26,7 +26,7 @@ export async function fetchRevenue() {
     return data;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch revenue data.");
+    //throw new Error("Failed to fetch revenue data.");
   }
 }
 
@@ -47,7 +47,7 @@ export async function fetchLatestInvoices() {
     return latestInvoices;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch the latest invoices.");
+    // throw new Error("Failed to fetch the latest invoices.");
   }
 }
 
@@ -170,11 +170,11 @@ export async function fetchInvoiceById(id: string) {
       // Convert amount from cents to dollars
       amount: invoice.amount / 100,
     }));
-
+    console.log("que wea ermano", invoice);
     return invoice[0];
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch invoice.");
+    throw new Error("Parece que se pitió algo...");
   }
 }
 
